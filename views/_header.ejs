@@ -1,0 +1,37 @@
+
+<header>
+    <nav>
+        <div id="page-title">
+            <p>
+                <a href="/">ERS | <%- title %></a>
+            </p>
+        </div>
+        
+        <div id="page-links">
+
+            <!-- <% if(locals.user) {%> -->
+                <div>
+                    <a href=" "> Assign Work </a>
+                </div>
+                <div>
+                    <a href=" "> Employee List </a>
+                </div>
+                <div>
+                    <a href=" "> Register </a>
+                </div>
+            <!-- <%}%> -->
+                
+                <% if(locals.user) {%>
+                    <div>
+                        <a href="review-page">Welcome <%= user.name  %> </a>
+                    </div>
+                    <div>
+                        <a href="/user/sign-up"> Sign Out</a>
+                    </div>
+                <%}%>
+                    <div>
+                        <a href="/user/sign-up"> Sign Up</a>
+                    </div>
+                </div>
+            </nav>
+        </header>

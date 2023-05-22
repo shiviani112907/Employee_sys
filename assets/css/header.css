@@ -1,0 +1,32 @@
+header {
+  height: auto;
+  position: sticky;
+  top: 0px;
+  background-color: rgb(71, 71, 116);
+}
+header nav {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+header nav a {
+  font-weight: 600;
+  color: aliceblue;
+}
+header nav #page-title {
+  margin-left: 3%;
+}
+header nav #page-links {
+  width: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
+  justify-content: space-around;
+  border: 1px solid greenyellow;
+}
+header nav #page-links div {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/*# sourceMappingURL=header.css.map */

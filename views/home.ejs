@@ -1,0 +1,8 @@
+
+<% if(!locals.user) {%>
+    <%- include('user_sign_in'); %>
+<%} else if(locals.user && !locals.user.isAdmin){%>
+    <%- include('review',{user:user}); %>
+<%} else {%>
+    <%- include('admin',{user:user}); %>
+<%}%>
