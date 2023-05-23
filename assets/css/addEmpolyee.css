@@ -1,0 +1,59 @@
+main {
+  height: auto;
+  min-height: 92vh;
+  background-image: linear-gradient(lightblue, lightgreen);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main #add-employee {
+  text-align: center;
+  height: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: beige;
+  box-shadow: 0px 0px 2px 2px gray;
+}
+main #add-employee form {
+  height: 100%;
+  width: 100%;
+}
+main #add-employee form .input {
+  height: auto;
+  min-height: 50px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+main #add-employee form .input label {
+  height: 40%;
+  font-size: 20px;
+  font-weight: 100;
+  margin-bottom: auto;
+}
+main #add-employee form .input input {
+  width: 90%;
+  margin-top: 5px;
+  height: 35px;
+  border-radius: 50px;
+  text-align: center;
+  border: none;
+  box-shadow: 0px 0px 2px 2px lightgray;
+}
+main #add-employee form button {
+  margin-top: 2%;
+  height: 50px;
+  width: 50%;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  color: white;
+  background-color: rgb(99, 99, 235);
+  box-shadow: 0px 0px 2px 2px lightgray;
+}
+
+/*# sourceMappingURL=addEmpolyee.css.map */

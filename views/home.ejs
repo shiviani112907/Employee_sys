@@ -1,8 +1,60 @@
-
-<% if(!locals.user) {%>
+<link rel="stylesheet" href="/css/home.css">
+<% if(!locals.user) { %>
     <%- include('user_sign_in'); %>
-<%}%>
-<% if(locals.user) {%>
-    <p>Hello user</p>
-<%}%>
-    
+<% } else { %>
+    <main>
+        <div id="description">
+            <p>Welcome to <strong>Employee Review System</strong>. It helps the Admin to identify top-performing employees by reviews obtained from their co-workers. It also allows the Admin to promote employees to Admin status and add new employees. This system creates a culture of accountability and promotes excellence, leading to better hiring decisions and a stronger workforce.</p>
+            <hr>
+        </div>
+        <div id="review-container">
+            <div class="section" id="left">
+                <div class="review-box">
+                    <div class="heading">
+                        <h2>Kindly review your co-employees</h2>
+                        <br>
+                        <h5>This task is assigned by the Admin</h5>
+                    </div>
+        
+                    <div class="reviews">
+                        <% for(let i = 0; i < toReview.length; i++) { %>
+                            <% if(toReview[i] != null) { %>
+                                <div class="outerBox">
+                                    <h4>To: <%= toReview[i].name %></h4>
+                                    <div class="innerBox">
+                                        <form action="/review/new-review/<%= toReview[i]._id %>" method="get">
+                                            <textarea placeholder="Review, Here!!" name="newReview" rows="5" cols="20" class="textarea"></textarea>
+                                            <br>
+                                            <button type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>   
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="right">
+                <div class="review-box">
+                    <div class="heading">
+                        <h2>My Reviews</h2>
+                    </div>
+                    <% for(let review of myReviews) { %>
+                        <% if(review != null) { %>
+                            <div class="card-out">
+                                <div class="card-in">
+                                    <h3>Message: <%= review.content %></h3>
+                                    <p>From: <strong><%= review.name %></strong></p>
+                                </div>
+                            </div>
+                        <% } else { %>
+                            <h1>Nothing to view yet!!</h1>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+<% } %>
+
+<script type="text/javascript" src="/js/home.js"></script>

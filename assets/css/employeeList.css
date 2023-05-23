@@ -1,0 +1,50 @@
+main {
+  height: auto;
+  min-height: 92vh;
+  width: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: linear-gradient(lightblue, lightgreen);
+}
+main .container {
+  padding: 1%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .container .table {
+  width: auto;
+  box-shadow: 0px 0px 2px 2px lightgreen;
+  background-color: lightgoldenrodyellow;
+}
+main .container .table thead {
+  width: auto;
+  height: 50px;
+  border-bottom: 1px solid lightgreen;
+}
+main .container .table thead th {
+  border-bottom: 1px solid lightgreen;
+}
+main .container .table thead .L-border {
+  border-left: 1px solid lightgreen;
+  padding-left: 2%;
+  width: 120px;
+}
+main .container .table tbody tr {
+  width: auto;
+  height: 30px;
+}
+main .container .table tbody .L-border {
+  border-left: 1px solid lightgreen;
+  width: auto;
+}
+main .container .table:hover {
+  scale: 1.1;
+  transition: 2s scale ease-in-out;
+}
+
+/*# sourceMappingURL=employeeList.css.map */

@@ -9,9 +9,12 @@ const flash = require('connect-flash');
 const customMW = require('./config/flash_midddleware');
 
 // For Authentication
+const cookie = require('cookie-parser');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
+
+//Starts express
 const app = express();
 const port = 5000;
 
@@ -20,7 +23,13 @@ const expressLayout = require('express-ejs-layouts');
 
 // Body parser
 app.use(express.urlencoded({extended:true}));
+
+// Cookie parser
+app.use(cookie());
+
+//For static files
 app.use(express.static('./assets'));
+
 
 app.use(expressLayout);
 // Enables the use of external styles and scripts
@@ -36,7 +45,10 @@ app.use(session({
     name: "ERS",
     secret: "EmployeeReviewSystem",
     saveUninitialized: false,
-    resave: true,
+    resave: false,
+    Cookie :{
+        maxAge: (1000*60*100)
+    },
     store : new MongoStore({
         uri : "mongodb+srv://Riteshk229:9693640242@cluster0.lucaj3w.mongodb.net/ERS?retryWrites=true&w=majority",
         autoRemove: 'disabled'
@@ -49,6 +61,7 @@ app.use(session({
 // Enables Authentication
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 // Enable flash notifications
 app.use(flash());

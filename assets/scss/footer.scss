@@ -1,5 +1,12 @@
 footer{
     display: flex;
-    height: 40px;
-    background-color: aqua;
+    height: auto;
+    background-color: rgb(24, 236, 236);
+    p{
+        margin: 0;
+        margin-left: 2%;
+        text-align: left;
+        font-size: 15px;
+        font-weight: 700;
+    }
 }

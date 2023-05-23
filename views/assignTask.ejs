@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/assignTask.css">
+
+<main>
+    <div class="container-fluid mt-2">
+        <div class="heading">Kindly, Assign Reviewee and Reviewer</div>
+        <div>
+            <div class="reviewContainer">
+                <div class="reviewer">
+                    <div class="text-center">
+                        Assign Task
+                    </div>
+                    <hr>
+                    <form action="/admin/setReview" method="POST" class="mt-1 card-body">
+                        <div> Select Reviewer</div>
+                        <select class="form-select form-select" aria-label="Default select example" name="sender">
+                                <option selected>Reviewer</option>
+                                <% for(let i = 0; i < employee.length ; i++){ %>
+                                    <% if(employee[i].id != user.id) {%>
+                                        <option value= <%= employee[i].id %> > <%= employee[i].name %> </option>
+                                     <%}%>
+                                <%}%>    
+                            </select>
+        
+                        <div> Select  Reviewee </div>
+        
+                        <select class="form-select form-select" aria-label="Default select example" name="receiver">
+                            <option selected>Reviewee</option>
+                                <% for(let i = 0; i < employee.length ; i++){ %>
+                                    <% if(employee[i].id != user.id) {%>
+                                        <option value=<%= employee[i].id %> > <%=employee[i].name %> </option>
+                                     <%}%>
+                                <%}%>
+                        </select>
+                    
+                        <div class="submitButtons">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+        
+                </div>
+            </div>
+
+            <div style="width:20px;"></div>
+
+            <div class="reviewContainer">
+                <div class="reviewer">
+
+                    <div class="text-center">Make Employee an Admin</div>
+                    <hr>
+            
+                    <form method="POST" action="/admin/newAdmin" class="mt-3" style="justify-content: center;">
+                        <select class="form-select form-select" aria-label="Default select example" name="selectedUser">
+                            <option selected>Select Employee</option>
+                            <% for(let i = 0; i < employee.length ; i++){ %>
+                                <% if(employee[i].id != user.id) {%>
+                                    <option value= <%= employee[i].id %> > <%= employee[i].name %> </option>
+                                 <%}%>
+                            <%}%>
+                        </select>
+
+                        <div style="height: 50px;">
+
+                        </div>
+        
+                        <div class="submitButtons">
+                            <button type="submit">Submit</button>
+                        </div>
+            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

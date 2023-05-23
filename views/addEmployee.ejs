@@ -1,0 +1,25 @@
+
+<main>
+    <div id ="add-employee">
+        <h1> Welcome <%= user.name%> </h1>
+        <form method="POST" action="/admin/create" >
+            <div class="input">
+                <label for="name">Employee's Name </label>
+                <input type="text" name="name" placeholder="Employee's Name" required>
+            </div>
+            <div class="input">
+                <label for="email"> Employee's Email </label>
+                <input type="email" name="email" placeholder="Employee's Name" required>
+            </div>
+            <div class="input">
+                <label for="password"> Password </label>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input">
+                <label for="confirm_password"> Confirm Pasword </label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+                <button type="submit"> Register Employee</button>
+        </form>
+    </div>
+</main>

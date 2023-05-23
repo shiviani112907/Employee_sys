@@ -12,18 +12,18 @@
             <% if(locals.user) {%>
                 <% if(locals.user.isAdmin) {%>
                     <div>
-                        <a href=" "> Assign Work </a>
+                        <a href="/admin/assignWork"> Assign Work </a>
                     </div>
                     <div>
-                        <a href=" "> Employee List </a>
+                        <a href="/admin/view-employees"> Employee List </a>
                     </div>
                     <div>
-                        <a href=" "> Register </a>
+                        <a href="/admin/addEmployee"> Register </a>
                     </div>
                 <%}%>
 
                 <div>
-                    <a href="review-page">Welcome <%= user.name  %> </a>
+                    <a href="/admin/view-employees">Welcome <%= user.name  %> </a>
                 </div>
                 <div>
                     <a href="/user/sign-out"> Sign Out</a>
