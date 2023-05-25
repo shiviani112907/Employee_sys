@@ -1,30 +1,26 @@
+// Importing Models
 const User = require('../models/user');
 
-module.exports.home = async function(req,res){
-    let user = await User.find({email:req.body.email});
-    return res.render('home',{
-        title: "Employee View",
-        user:user
-    })
-};
 
 // Get sign-up data and create a new user
 module.exports.create = async function(req,res){
     try{
-        // console.log(req.body);
+
+        //If password doesn't match
         if(req.body.password != req.body.confirm_password){
-            // console.log('Password dont match');
             req.flash("error",'Please enter the same password in confirm password');
             return res.redirect('back');
         }
         
+        //If user exists
         let existingUser = await User.findOne({ email: req.body.email });
-        
         if(existingUser){
             req.flash("error","Email is already Associated with another user");
             return res.redirect('back');
         }
         else{
+
+            // Create new user if it doesn't exist
             let user = await User.create({
                 name: req.body.name,
                 email: req.body.email,
@@ -32,16 +28,20 @@ module.exports.create = async function(req,res){
                 isAdmin: false
             });
             
+            // On success
             req.flash("success","Account Created");
             return res.redirect('/user/sign-in');
         }
     } catch (err){
-        // console.log("Error in creating User",err);
-        req.flash("error",err);
+        //On failure
+        console.log("Error in creating User",err);
+        req.flash("error",'Error in creating User');
         return res.redirect('back');
     }
 }
 
+
+// To sign-up
 module.exports.signUP = function(req,res){
 
     if(req.isAuthenticated()){
@@ -54,6 +54,7 @@ module.exports.signUP = function(req,res){
     
 };
 
+//To sign-in
 module.exports.signIN = async function(req,res){
 
     if(req.isAuthenticated){
@@ -69,13 +70,12 @@ module.exports.signIN = async function(req,res){
     
 };
 
+
+//Logs in user and create new
 module.exports.createSession = async function(req,res){
-    // let person = req.user;
+
+    let person = req.user;
     req.flash("success","Logged in Succesfully!");
-
-    // console.log(req.body,'\n',person.isAdmin);
-
-    let user = await User.findOne({email:req.body.email});
 
     if (req.body.adminCode == 1234 &&  person.isAdmin){
         // user.isAdmin = true;
@@ -85,6 +85,7 @@ module.exports.createSession = async function(req,res){
     return res.redirect('/');
 };
 
+// Sign-out user
 module.exports.destroySession = function(req,res){
     req.logout(function(err){
         if (err) { return next(err); }
@@ -93,6 +94,8 @@ module.exports.destroySession = function(req,res){
     });
 };
 
+
+//If password is forgotten
 module.exports.forgetPasswordPage = function(req, res){
     req.flash("success","Reset password link has been send to the email!!")
     return res.redirect("back");

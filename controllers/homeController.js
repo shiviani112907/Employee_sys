@@ -1,3 +1,4 @@
+// Importing models
 const User = require('../models/user');
 const Reviews = require('../models/review');
 
@@ -13,15 +14,14 @@ module.exports.home = async function(req,res){
         // Fetching the user and review from the form
         let user = await User.findById(req.user.id);
         let review = await Reviews.find({ reviewer: req.user.id });
-        console.log(review);
 
-        // taking all the necessary part of recipent user in recipent array so that we can pass it as a varibalbe'
+        // Taking all the necessary info of recipent user in recipent array so that we can pass it as a variable'
         let toReview = [];
         for(let i = 0; i < user.toReview.length ; i++){
             let userName = await User.findById(user.toReview[i]);
             toReview.push(userName);
         }
-        // Taking all the necessary imformation of the reviewers in review array, and passing it in homePage
+        // Taking all the necessary info of the reviewers in review array, and passing it in homePage
         let myReviews = [];
         for(let i = 0; i < review.length ; i++){
             let reviewUser = await User.findById(review[i].reviewee);
@@ -43,7 +43,7 @@ module.exports.home = async function(req,res){
             title = "Employee View";
         }
        
-        // Render the page, with the variable made above , and pass them as the argument
+        // Render the page, with the variable made above , and pass them
         return res.render('home', {
             title: title,
             toReview : toReview,

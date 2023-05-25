@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Review Schema
 const reviewSchema = new mongoose.Schema({
     content:{
         type: String,
@@ -19,6 +20,7 @@ const reviewSchema = new mongoose.Schema({
     timestamps:true
 });
 
+// Creating new model and exporting it
 const Reviews = mongoose.model('Reviews',reviewSchema);
 
 module.exports = Reviews;
