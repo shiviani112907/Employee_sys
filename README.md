@@ -17,7 +17,7 @@ node --version
 npm --version
 git --version
 Now clone this repository
-git clone https://github.com/wizzenalum/employee-review-system.git
+git clone 
 Change directory to Ecomerce-API
 cd employee-review-system
 Install dependencies
